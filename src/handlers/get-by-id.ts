@@ -5,7 +5,7 @@ exports.getByIdHandler = async (event) => {
         throw new Error(`getOneVolume only accept GET method, you tried: ${event.httpMethod}`);
     }
     // All log statements are written to CloudWatch
-    console.info('received:', event);
+    console.info('received:', event.pathParameters);
 
     let response;
 
@@ -19,7 +19,7 @@ exports.getByIdHandler = async (event) => {
     }catch(ex){
         response = {
             statusCode: 400,
-            body: JSON.stringify(ex)
+            body: ex.message
         }
     }
 
