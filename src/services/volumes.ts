@@ -11,6 +11,15 @@ class VolumeService{
         });
     }
 
+    list = async (q : string, projection : string = 'lite', maxResults : number = 10, startIndex : number = 0) => {
+        return await this.books.volumes.list({
+            q,
+            projection,
+            maxResults,
+            startIndex,
+        });
+    }
+
     findById = async (id:string, projection:string = 'lite') => {
         return await this.books.volumes.get({
             volumeId: id,

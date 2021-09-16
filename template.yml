@@ -35,6 +35,22 @@ Resources:
             Method: get
             RestApiId:
               Ref: ApiGatewayApi
+  GetAllVolumesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/handlers/get-all.getAllHandler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve a list of volumes filtered using the input query via Google Books API.
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /volumes
+            Method: get
+            RestApiId:
+              Ref: ApiGatewayApi
 
   ApiGatewayApi:
     Type: AWS::Serverless::Api
