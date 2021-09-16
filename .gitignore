@@ -105,3 +105,5 @@ dist
 
 # IDEA IDE preferences
 .idea/
+
+env.json
