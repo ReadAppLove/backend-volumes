@@ -9,7 +9,7 @@ export class VolumeController {
         const volumeService : VolumeService = new VolumeService();
 
         if(!id){
-            throw "You must specify the volume's ID";
+            throw new Error("You must specify the volume's ID");
         }
 
         return volumeService.findById(id, projection)
