@@ -1,4 +1,4 @@
-// Import all functions from get-all-items.js 
+// Import all functions from get-all.js
 const lambda = require('../../../dist/handlers/get-all.js');
 // Import dynamodb from aws-sdk 
 
