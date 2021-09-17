@@ -4,7 +4,7 @@ const lambda = require('../../../dist/handlers/get-all.js');
 
 // This includes all tests for getAllItemsHandler() 
 describe('Test getAllHandler', () => {
-    it('should return ids', async () => {
+    it('Should return a list of volumes', async () => {
         const items = ['9CJWTbd-RYoC','OyTengEACAAJ' ];
 
         const event = {
