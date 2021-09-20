@@ -1,9 +1,6 @@
 import {VolumeController} from "../controllers/volumes";
 
 exports.getByIdHandler = async (event) => {
-    if (event.httpMethod !== 'GET') {
-        throw new Error(`getOneVolume only accept GET method, you tried: ${event.httpMethod}`);
-    }
     // All log statements are written to CloudWatch
     console.info('received:', event.pathParameters);
 

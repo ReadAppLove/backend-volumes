@@ -1,9 +1,6 @@
 import {VolumeController} from "../controllers/volumes";
 
 exports.getAllHandler = async (event) => {
-    if (event.httpMethod !== 'GET') {
-        throw new Error(`getAll only accept GET method, you tried: ${event.httpMethod}`);
-    }
     // All log statements are written to CloudWatch
     console.info('received:', event.queryStringParameters);
 
