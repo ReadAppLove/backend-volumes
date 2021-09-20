@@ -31,7 +31,7 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: /volumes/{id}
+            Path: /api/v1/volumes/{id}
             Method: get
             RestApiId:
               Ref: ApiGatewayApi
@@ -47,7 +47,7 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: /volumes
+            Path: /api/v1/volumes
             Method: get
             RestApiId:
               Ref: ApiGatewayApi
@@ -56,6 +56,10 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       StageName: prod
+      Cors:
+        AllowMethods: "'POST, GET'"
+        AllowHeaders: "'X-Forwarded-For,Content-Type'"
+        AllowOrigin: "'*'"
 
 Outputs:
   WebEndpoint:
