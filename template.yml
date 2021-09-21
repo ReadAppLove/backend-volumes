@@ -34,7 +34,7 @@ Resources:
             Path: /api/v1/volumes/{id}
             Method: get
             RestApiId:
-              Ref: ApiGatewayApi
+              Ref: MainApiGateway
   GetAllVolumesFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -50,9 +50,9 @@ Resources:
             Path: /api/v1/volumes
             Method: get
             RestApiId:
-              Ref: ApiGatewayApi
+              Ref: MainApiGateway
 
-  ApiGatewayApi:
+  MainApiGateway:
     Type: AWS::Serverless::Api
     Properties:
       StageName: prod
@@ -64,4 +64,4 @@ Resources:
 Outputs:
   WebEndpoint:
     Description: "API Gateway endpoint URL for Prod stage"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/prod/"
+    Value: !Sub "https://${MainApiGateway}.execute-api.${AWS::Region}.amazonaws.com/prod/"
