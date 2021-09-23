@@ -9,15 +9,16 @@ export class VolumeCategoryController {
         return volumeCategoryService.list(locale);
     }
 
-    static getVolumes = async (params) => {
+    static getVolumes = async (pathParameters,queryStringParameters) => {
 
-        if(!params || !params?.id){
+        if(!pathParameters || !pathParameters?.id){
             throw new Error('You have to specify the "id" parameter');
         }
 
-        const id = params.id?.trim();
+        const id = pathParameters.id?.trim();
+        const locale = queryStringParameters?.locale?.trim() ?? 'it_IT';
         const volumeCategoryService : VolumeCategoryService = new VolumeCategoryService();
 
-        return  volumeCategoryService.getVolumes(id);
+        return  volumeCategoryService.getVolumes(id,locale);
     }
 }

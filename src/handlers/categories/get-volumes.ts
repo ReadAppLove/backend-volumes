@@ -7,7 +7,7 @@ exports.handler = async (event) => {
     let response;
 
     try{
-        const item = await VolumeCategoryController.getVolumes(event.pathParameters);
+        const item = await VolumeCategoryController.getVolumes(event.pathParameters, event.queryStringParameters);
 
         response = {
             statusCode: item.status,
