@@ -106,4 +106,4 @@ dist
 # IDEA IDE preferences
 .idea/
 
-env.json
+service_account.json

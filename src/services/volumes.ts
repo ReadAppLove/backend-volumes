@@ -5,9 +5,18 @@ class VolumeService{
     private books : books_v1.Books;
 
     constructor() {
+
+        const auth = new google.auth.GoogleAuth({
+            keyFile: 'service_account.json',
+            scopes: [
+                'https://www.googleapis.com/auth/cloud-platform',
+                'https://www.googleapis.com/auth/books'
+            ],
+        });
+
         this.books = google.books({
             version: 'v1',
-            auth: process.env.GOOGLE_API_KEY,
+            auth,
         });
     }
 
@@ -26,12 +35,6 @@ class VolumeService{
             projection
         });
     }
-
-    /*
-    list = (q, maxResults = 10, orderBy = 'newest', projection = 'lite', startIndex = 0) => {
-
-    }
-     */
 }
 
 export {VolumeService};
