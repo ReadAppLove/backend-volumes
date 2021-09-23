@@ -1,5 +1,5 @@
 // Import all functions from get-by-id.js
-const lambda = require('../../../dist/handlers/get-by-id.js');
+const lambda = require('../../../../dist/handlers/volumes/get-by-id.js');
 
 // This includes all tests for getByIdHandler()
 describe('Test getByIdHandler', () => {
@@ -22,6 +22,6 @@ describe('Test getByIdHandler', () => {
 
         // Compare the result with the expected result
         expect(result.statusCode).toEqual(200);
-        expect(responseBody.data.id).toEqual(item.id);
+        expect(responseBody.id).toEqual(item.id);
     });
 });

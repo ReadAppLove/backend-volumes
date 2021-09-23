@@ -1,5 +1,5 @@
 // Import all functions from get-all.js
-const lambda = require('../../../dist/handlers/get-all.js');
+const lambda = require('../../../../dist/handlers/volumes/get-all.js');
 // Import dynamodb from aws-sdk 
 
 // This includes all tests for getAllItemsHandler() 

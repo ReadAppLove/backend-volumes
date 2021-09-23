@@ -1,4 +1,4 @@
-import {VolumeController} from "../controllers/volumes";
+import {VolumeController} from "../../controllers/volumes";
 
 exports.getAllHandler = async (event) => {
     // All log statements are written to CloudWatch
@@ -11,7 +11,7 @@ exports.getAllHandler = async (event) => {
 
         response = {
             statusCode: 200,
-            body: JSON.stringify(items)
+            body: JSON.stringify(items.data)
         };
     }catch(ex){
         response = {
