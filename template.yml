@@ -22,7 +22,7 @@ Resources:
   GetVolumeByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: dist/handlers/get-by-id.getByIdHandler
+      Handler: dist/handlers/volumes/get-by-id.getByIdHandler
       Runtime: nodejs14.x
       MemorySize: 128
       Timeout: 100
@@ -38,7 +38,7 @@ Resources:
   GetAllVolumesFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: dist/handlers/get-all.getAllHandler
+      Handler: dist/handlers/volumes/get-all.getAllHandler
       Runtime: nodejs14.x
       MemorySize: 128
       Timeout: 100
@@ -48,6 +48,23 @@ Resources:
           Type: Api
           Properties:
             Path: /api/v1/volumes
+            Method: get
+            RestApiId:
+              Ref: MainApiGateway
+
+  GetAllVolumeCategorisFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/handlers/categories/get-all.getAllHandler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve a list of volume categoriess filtered by locale via Google Books API.
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /api/v1/volume_categories
             Method: get
             RestApiId:
               Ref: MainApiGateway
