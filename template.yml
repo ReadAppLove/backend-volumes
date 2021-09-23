@@ -40,7 +40,7 @@ Resources:
     Properties:
       Handler: dist/handlers/volumes/get-all.getAllHandler
       Runtime: nodejs14.x
-      MemorySize: 128
+      MemorySize: 256
       Timeout: 100
       Description: Retrieve a list of volumes filtered using the input query via Google Books API.
       Events:
@@ -57,7 +57,7 @@ Resources:
     Properties:
       Handler: dist/handlers/categories/get-all.getAllHandler
       Runtime: nodejs14.x
-      MemorySize: 128
+      MemorySize: 256
       Timeout: 100
       Description: Retrieve a list of volume categoriess filtered by locale via Google Books API.
       Events:
@@ -74,7 +74,7 @@ Resources:
     Properties:
       Handler: dist/handlers/categories/get-volumes.handler
       Runtime: nodejs14.x
-      MemorySize: 128
+      MemorySize: 256
       Timeout: 100
       Description: Retrieve a list of volumes associated to a specific category via Google Books API.
       Events:
