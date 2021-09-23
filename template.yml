@@ -69,6 +69,23 @@ Resources:
             RestApiId:
               Ref: MainApiGateway
 
+  GetVolumesInCategoryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/handlers/categories/get-volumes.handler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve a list of volumes associated to a specific category via Google Books API.
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /api/v1/volume_categories/{id}/volumes
+            Method: get
+            RestApiId:
+              Ref: MainApiGateway
+
   MainApiGateway:
     Type: AWS::Serverless::Api
     Properties:

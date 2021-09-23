@@ -26,6 +26,12 @@ class VolumeCategoryService {
             locale,
         });
     }
+
+    getVolumes = async (id) => {
+        return await this._books.onboarding.listCategoryVolumes({
+            categoryId:id
+        });
+    }
 }
 
 export {VolumeCategoryService}
