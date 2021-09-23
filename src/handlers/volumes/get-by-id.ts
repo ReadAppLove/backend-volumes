@@ -10,7 +10,7 @@ exports.getByIdHandler = async (event) => {
         const item = await VolumeController.findById(event.pathParameters);
 
         response = {
-            statusCode: 200,
+            statusCode: item.status,
             body: JSON.stringify(item.data)
         };
     }catch(ex){

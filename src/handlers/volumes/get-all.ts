@@ -10,7 +10,7 @@ exports.getAllHandler = async (event) => {
         const items = await VolumeController.list(event.queryStringParameters);
 
         response = {
-            statusCode: 200,
+            statusCode: items.status,
             body: JSON.stringify(items.data)
         };
     }catch(ex){
