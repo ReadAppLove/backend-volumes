@@ -91,7 +91,7 @@ Resources:
     Properties:
       StageName: prod
       CacheClusterEnabled: true
-      CacheClusterSize: "'0.5'"
+      CacheClusterSize: "0.5"
       Cors:
         AllowMethods: "'POST, GET'"
         AllowHeaders: "'X-Forwarded-For,Content-Type'"
