@@ -92,6 +92,11 @@ Resources:
       StageName: prod
       CacheClusterEnabled: true
       CacheClusterSize: "0.5"
+      MethodSettings:
+        - ResourcePath: /~1api~1v1~1volume_categories~1*
+          HttpMethod: GET
+          CachingEnabled: true
+          CacheTtlInSeconds: 3600
       Cors:
         AllowMethods: "'POST, GET'"
         AllowHeaders: "'X-Forwarded-For,Content-Type'"
