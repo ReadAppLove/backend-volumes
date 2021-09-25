@@ -10,12 +10,13 @@ class VolumeService{
         });
     }
 
-    list = async (q : string, projection : string = 'lite', maxResults : number = 10, startIndex : number = 0) => {
+    list = async (q : string, projection : string = 'lite', maxResults : number = 10, startIndex : number = 0, langRestrict : string = 'it_IT') => {
         return await this.books.volumes.list({
             q,
             projection,
             maxResults,
             startIndex,
+            langRestrict,
         });
     }
 

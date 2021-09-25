@@ -11,10 +11,11 @@ export class VolumeController {
         const projection : string = params.projection?.trim() ?? 'lite';
         const maxResults : number = parseInt(params.maxResults ?? 10);
         const startIndex : number = parseInt(params.startIndex ?? 0);
+        const langRestrict : string = params.langRestrict ?? 'it_IT';
 
         const volumeService : VolumeService = new VolumeService();
 
-        return volumeService.list(q, projection, maxResults, startIndex);
+        return volumeService.list(q, projection, maxResults, startIndex, langRestrict);
     }
 
     static findById = async (params) => {
