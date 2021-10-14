@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Upload Lambda code in Production
 
 # Controls when the workflow will run
 on:
@@ -44,8 +44,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Validate SAM template
-        run: sam validate
-
-      - name: Deploy on AWS
-        run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name readapp-backend-volumes --s3-bucket ${{ secrets.AWS_S3_BUCKET }} --capabilities CAPABILITY_IAM --region ${{ secrets.AWS_REGION }}
+      - name: Update the Lambda code
+        run: ./deploy_prod.sh
