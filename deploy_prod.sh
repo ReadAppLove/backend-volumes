@@ -27,6 +27,6 @@ echo "Compressed successfully."
 
 # Upload the source on S3 Bucket
 echo "Uploading distribution directory to S3..."
-aws s3 cp dist.zip s3://readapp-cloudformation-backend/backend-volumes/production/dist-`date +%s`.zip --profile readapp
+aws s3 cp dist.zip s3://readapp-cloudformation-backend/backend-volumes/production/dist-`date +%s`.zip
 echo "Zip file uploaded successfully."
 # Update Lambda code pointing to S3 Bucket
