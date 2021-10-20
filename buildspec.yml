@@ -2,20 +2,22 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo "Installing dependencies..."
       - npm install -g typescript
       - npm install
   pre_build:
     commands:
-      # Discover and run unit tests in the '__tests__' directory
-      - npm run test
-      # Remove all unit tests to reduce the size of the package that will be ultimately uploaded to Lambda
-      - rm -rf ./__tests__
-      # Remove all dependencies not needed for the Lambda deployment package (the packages from devDependencies in package.json)
-      - npm prune --production
+      - echo "Nothing to do in pre-build phase..."
   build:
     commands:
+      - echo "Building the project..."
       # Use AWS SAM to package the application by using AWS CloudFormation
       - tsc
+      # Discover and run unit tests in the '__tests__' directory
+      - echo "Testing the project..."
+      - npm run test
+      # Remove all dependencies not needed for the Lambda deployment package (the packages from devDependencies in package.json)
+      - npm prune --production
 artifacts:
   type: zip
   files:
