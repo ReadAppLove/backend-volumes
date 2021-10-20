@@ -2,7 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
-      # Install all dependencies (including dependencies for running tests)
+      - npm install -g typescript
       - npm install
   pre_build:
     commands:
@@ -15,8 +15,12 @@ phases:
   build:
     commands:
       # Use AWS SAM to package the application by using AWS CloudFormation
-      - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
+      - tsc
 artifacts:
   type: zip
   files:
-    - template-export.yml
+    - package.json
+    - package-lock.json
+    - 'dist/**/*'
+    - README.md
+    - template-export.yaml
