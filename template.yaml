@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  readapp-backend-production
+
+Transform:
+  - AWS::Serverless-2016-10-31
+
+Resources:
+
+  getVolumeByIdFunction:
+    # DependsOn: codeS3Bucket
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: handlers/volumes/get-by-id.getByIdHandler
+      Runtime: nodejs14.x
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve a single volume via Google Books API.
+
+  getAllVolumesFunction:
+    Type: AWS::Serverless::Function
+    # DependsOn: codeS3Bucket
+    Properties:
+      Handler: handlers/volumes/get-all.getAllHandler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Timeout: 100
+      Description: Retrieve a list of volumes filtered using the input query via Google Books API.
+
+  getAllVolumeCategoriesFunction:
+    Type: AWS::Serverless::Function
+    # DependsOn: codeS3Bucket
+    Properties:
+      Handler: handlers/categories/get-all.getAllHandler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Timeout: 100
+      Description: Retrieve a list of volume categories filtered by locale via Google Books API.
+
+  getVolumesInCategoryFunction:
+    Type: AWS::Serverless::Function
+    # DependsOn: codeS3Bucket
+    Properties:
+      Handler: handlers/categories/get-volumes.handler
+      Runtime: nodejs14.x
+      MemorySize: 256
+      Timeout: 100
+      Description: Retrieve a list of volumes associated to a specific category via Google Books API.
