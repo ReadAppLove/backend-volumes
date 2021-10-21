@@ -1,15 +1,15 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-  readapp-backend-production
+  readapp-backend-volumes
 
 Transform:
   - AWS::Serverless-2016-10-31
 
 Resources:
-
   getVolumeByIdFunction:
-    # DependsOn: codeS3Bucket
     Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: makefile
     Properties:
       Handler: handlers/volumes/get-by-id.getByIdHandler
       Runtime: nodejs14.x
@@ -19,7 +19,8 @@ Resources:
 
   getAllVolumesFunction:
     Type: AWS::Serverless::Function
-    # DependsOn: codeS3Bucket
+    Metadata:
+      BuildMethod: makefile
     Properties:
       Handler: handlers/volumes/get-all.getAllHandler
       Runtime: nodejs14.x
@@ -29,7 +30,8 @@ Resources:
 
   getAllVolumeCategoriesFunction:
     Type: AWS::Serverless::Function
-    # DependsOn: codeS3Bucket
+    Metadata:
+      BuildMethod: makefile
     Properties:
       Handler: handlers/categories/get-all.getAllHandler
       Runtime: nodejs14.x
@@ -39,7 +41,8 @@ Resources:
 
   getVolumesInCategoryFunction:
     Type: AWS::Serverless::Function
-    # DependsOn: codeS3Bucket
+    Metadata:
+      BuildMethod: makefile
     Properties:
       Handler: handlers/categories/get-volumes.handler
       Runtime: nodejs14.x
