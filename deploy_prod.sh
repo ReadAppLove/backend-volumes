@@ -1,32 +1,35 @@
 #!/bin/bash
 
-# Compile the source
-echo "Compiling the source code..."
+export STACK_NAME=readapp-backend-volumes
+
+# Remove build directories, if them exist
+rm -rf dist/
+rm -rf .aws-sam/
+
+# Compile TS files and generate "dist" directory
 TYPE_ERRORS="$(tsc --project ./tsconfig.json)"
 
+# Check if TS compile exit with errors
 if [[ -n $TYPE_ERRORS ]]; then
   echo "ERROR: "
-  echo $TYPE_ERRORS
+  echo "$TYPE_ERRORS"
   exit
 fi
 
-echo "Source compiled successfully."
+# Build the project following SAM template and generate ".aws-sam" directory
+sam build --profile readapp
 
-echo "Installing zip Linux package.."
-sudo apt install zip
+# Package the solution (maybe useless)
+sam package \
+  --s3-bucket readapp-cloudformation-backend \
+  --s3-prefix volumes/production \
+  --region eu-central-1 \
+  --profile readapp
 
-echo "Compressing dist directory..."
-zip -r dist.zip dist/*
-
-FILE=./dist.zip
-if [ ! -f "$FILE" ]; then
-    echo "$FILE does not exist."
-    exit
-fi
-echo "Compressed successfully."
-
-# Upload the source on S3 Bucket
-echo "Uploading distribution directory to S3..."
-aws s3 cp dist.zip s3://readapp-cloudformation-backend/backend-volumes/production/dist-`date +%s`.zip
-echo "Zip file uploaded successfully."
-# Update Lambda code pointing to S3 Bucket
+# Deploy the built project to AWS
+sam deploy \
+  --s3-bucket readapp-cloudformation-backend \
+  --s3-prefix volumes/production \
+  --stack-name $STACK_NAME \
+  --capabilities CAPABILITY_IAM \
+  --profile readapp

@@ -1,6 +1,6 @@
 {
-    "name": "delete-test-01",
-    "description": "delete-test-01-description",
+    "name": "readapp-backend-volumes",
+    "description": "readapp-backend-volumes",
     "version": "0.0.1",
     "private": true,
     "dependencies": {
@@ -12,6 +12,7 @@
         "typescript": "^4.4.3"
     },
     "scripts": {
+        "build": "node_modules/typescript/bin/tsc",
         "test": "jest"
     }
 }

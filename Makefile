@@ -1,12 +1,12 @@
 .PHONY: build-getVolumeByIdFunction build-getAllVolumesFunction build-getAllVolumeCategoriesFunction build-getVolumesInCategoryFunction
 
-build-getVolumeByIdFunction:
+build-GetVolumeByIdFunction:
 	$(MAKE) HANDLER=src/handlers/volumes/get-all.ts build-lambda-common
-build-getAllVolumesFunction:
+build-GetAllVolumesFunction:
 	$(MAKE) HANDLER=src/handlers/volumes/get-by-id.ts build-lambda-common
-build-getAllVolumeCategoriesFunction:
+build-GetAllVolumeCategoriesFunction:
 	$(MAKE) HANDLER=src/handlers/categories/get-all.ts build-lambda-common
-build-getVolumesInCategoryFunction:
+build-GetVolumesInCategoryFunction:
 	$(MAKE) HANDLER=src/handlers/categories/get-volumes.ts build-lambda-common
 
 build-lambda-common:
