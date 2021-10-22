@@ -17,19 +17,15 @@ if [[ -n $TYPE_ERRORS ]]; then
 fi
 
 # Build the project following SAM template and generate ".aws-sam" directory
-sam build --profile readapp
-
+sam build
 # Package the solution (maybe useless)
 sam package \
   --s3-bucket readapp-cloudformation-backend \
   --s3-prefix volumes/production \
-  --region eu-central-1 \
-  --profile readapp
-
+  --region eu-central-1
 # Deploy the built project to AWS
 sam deploy \
   --s3-bucket readapp-cloudformation-backend \
   --s3-prefix volumes/production \
   --stack-name $STACK_NAME \
-  --capabilities CAPABILITY_IAM \
-  --profile readapp
+  --capabilities CAPABILITY_IAM
