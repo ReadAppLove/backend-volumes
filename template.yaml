@@ -5,6 +5,11 @@ Description: >-
 Transform:
   - AWS::Serverless-2016-10-31
 
+Globals:
+  Function:
+    Layers:
+      - !Ref RuntimeDependenciesLayer
+
 Resources:
   GetVolumeByIdFunction:
     Type: AWS::Serverless::Function
@@ -53,6 +58,17 @@ Resources:
       MemorySize: 256
       Timeout: 100
       Description: Retrieve a list of volumes associated to a specific category via Google Books API.
+
+  RuntimeDependenciesLayer:
+    Type: AWS::Serverless::LayerVersion
+    Metadata:
+      BuildMethod: makefile
+    Properties:
+      ContentUri: ./
+      CompatibleRuntimes:
+        - nodejs14.x
+      RetentionPolicy: Retain
+      Description: Runtime dependencies for Lambdas
 
 Outputs:
   LambdaExportGetVolumeByIdFunction:
